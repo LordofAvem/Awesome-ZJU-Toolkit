@@ -16,17 +16,7 @@ def notify_user(keyword):
     """Windows弹窗 + 声音 + iPhone Bark推送"""
     print("触发提醒")
 
-    # Windows 声音
-    winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)
-
-    # 顶层弹窗
-    root = tk.Tk()
-    root.withdraw()
-    root.attributes("-topmost", True)
-    messagebox.showinfo("签到提醒", f"检测到关键字：{keyword}")
-    root.destroy()
-
-    # Bark 推送
+# Bark 推送
     try:
         title = "签到提醒"
         body = f"检测到关键字：{keyword}"
@@ -37,6 +27,16 @@ def notify_user(keyword):
         print("已推送到 iPhone")
     except Exception as e:
         print("Bark 推送失败:", e)
+
+    # Windows 声音
+    winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)
+
+    # 顶层弹窗
+    root = tk.Tk()
+    root.withdraw()
+    root.attributes("-topmost", True)
+    messagebox.showinfo("签到提醒", f"检测到关键字：{keyword}")
+    root.destroy()
 
 
 def main():
